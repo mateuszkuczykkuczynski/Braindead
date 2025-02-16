@@ -10,22 +10,21 @@ services:
       env_file:
         - ./backend/config/.env
 
-#  frontend:
-#    build: ./frontend
-#    command: npm run dev:host
-#    volumes:
-#      - ./frontend:/usr/src/app/
-#      - node_modules:/usr/src/app/node_modules/
-#    ports:
-#      - "5173:5173"
-#    env_file:
-#      - ./frontend/.env
-#    stdin_open: true
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/usr/src/app/
+      - node_modules:/usr/src/app/node_modules/
+    ports:
+      - "5173:5173"
+    env_file:
+      - ./frontend/.env
+    stdin_open: true
 
   db:
     image: postgres:16.4-bullseye
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/braindead_data
     ports:
       - "5432:5432"
     env_file:
@@ -33,4 +32,4 @@ services:
 
 volumes:
   postgres_data:
-#  node_modules:
+  node_modules:
